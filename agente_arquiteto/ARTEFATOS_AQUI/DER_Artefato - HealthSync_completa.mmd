@@ -1,0 +1,18 @@
+erDiagram
+    PACIENTE ||--o{ CONSULTA : agenda
+    PROFISSIONAL ||--o{ CONSULTA : realiza
+    CONSULTA ||--o| PRONTUARIO : gera
+    CONSULTA ||--o| FATURAMENTO : processa
+    PACIENTE {
+        uuid paciente_id
+        string cpf
+    }
+    PROFISSIONAL {
+        uuid profissional_id
+        string crm
+    }
+    CONSULTA {
+        uuid consulta_id
+        uuid paciente_id
+        uuid profissional_id
+    }

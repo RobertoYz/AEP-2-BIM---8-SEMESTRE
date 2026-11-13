@@ -1,0 +1,4 @@
+Sistema de Gestão de Projetos Acadêmicos da Escola de TI.
+Requisito Funcional 1: O sistema deve permitir que professores cadastrem bancas avaliadoras e vinculem grupos de alunos a projetos semestrais (AEP).
+Requisito Funcional 2: Cada entrega de projeto deve armazenar o histórico de submissões (arquivos PDF, links de repositórios e notas atribuídas por critério da rubrica).
+Restrição Técnica: O módulo de persistência deve ser isolado das regras de cálculo de média para permitir futura migração de banco de dados relacional (PostgreSQL) para NoSQL sem afetar os Controllers.

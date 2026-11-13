@@ -1,0 +1,20 @@
+erDiagram
+    PACIENTE ||--o{ CONSULTA : agenda
+    PROFISSIONAL ||--o{ CONSULTA : realiza
+    PACIENTE {
+        uuid paciente_id
+        string cpf
+        string nome
+    }
+    PROFISSIONAL {
+        uuid profissional_id
+        string crm
+        string especialidade
+    }
+    CONSULTA {
+        uuid consulta_id
+        uuid paciente_id
+        uuid profissional_id
+        timestamp data_hora
+        string status
+    }

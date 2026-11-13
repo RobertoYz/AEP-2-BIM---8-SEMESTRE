@@ -1,0 +1,7 @@
+erDiagram
+    MAQUINA_ATIVO ||--o{ SENSOR_IOT : possui
+    MAQUINA_ATIVO ||--o{ ORDEM_PRODUCAO : executa
+    MAQUINA_ATIVO ||--o{ ORDEM_SERVICO : sofre
+    SENSOR_IOT ||--o{ LEITURA_TELEMETRIA : gera
+    ORDEM_SERVICO ||--o{ RESERVA_CONSUMO_PECA : consome
+    PECA_ALMOXARIFADO ||--o{ RESERVA_CONSUMO_PECA : vinculada

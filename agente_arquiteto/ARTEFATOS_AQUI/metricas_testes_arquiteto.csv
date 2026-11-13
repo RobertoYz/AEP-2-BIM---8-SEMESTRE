@@ -1,0 +1,6 @@
+﻿Caso_Teste;Arquivo_Entrada;Strategy_GoF;Tempo_Resposta_s;Status_Validacao_SQL_DER;Compressao_Ruido_Pct;Tokens_Entrada;Tokens_Saida;Tokens_Total;Origem_Dados;ADR_Markdown;Script_SQL;Diagrama_Mermaid
+1;Artefato - Helpflow.pdf;completa;6.89;APROVADO (100%);0.0%;15004;742;15746;API_GEMINI;ADR_Artefato - Helpflow_completa.md;DDL_Artefato - Helpflow_completa.sql;DER_Artefato - Helpflow_completa.mmd
+2;Artefato - HealthSync.pdf;completa;5.17;APROVADO (100%);5.7%;6449;773;7222;API_GEMINI;ADR_Artefato - HealthSync_completa.md;DDL_Artefato - HealthSync_completa.sql;DER_Artefato - HealthSync_completa.mmd
+3;Artefato - HealthSync.pdf;persistencia;3.96;APROVADO (100%);5.7%;6375;412;6787;API_GEMINI;ADR_Artefato - HealthSync_persistencia.md;DDL_Artefato - HealthSync_persistencia.sql;DER_Artefato - HealthSync_persistencia.mmd
+4;Artefato - Forgetwin.pdf;completa;8.41;APROVADO (100%);3.8%;21664;825;22489;API_GEMINI;ADR_Artefato - Forgetwin_completa.md;DDL_Artefato - Forgetwin_completa.sql;DER_Artefato - Forgetwin_completa.mmd
+5;borda_vago.txt;completa;3.78;APROVADO (100%);0.0%;163;467;630;API_GEMINI;ADR_borda_vago_completa.md;DDL_borda_vago_completa.sql;DER_borda_vago_completa.mmd

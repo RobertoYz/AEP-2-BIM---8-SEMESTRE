@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Gráficos e Diagramas DER - Agente Arquiteto (Entrega 2)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+mermaid.initialize({ startOnLoad: true, theme: 'default' });
+</script>
+<style>
+body { font-family: Segoe UI, sans-serif; background: #f4f6f9; padding: 20px; color: #222; }
+.card { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 30px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+h2 { color: #1b5e20; border-bottom: 2px solid #1b5e20; padding-bottom: 8px; }
+.der-box { display: flex; gap: 20px; flex-wrap: wrap; justify-content: space-around; }
+.der-item { border: 1px solid #ddd; padding: 15px; border-radius: 6px; background: #fafafa; width: 45%; overflow-x: auto; }
+</style>
+</head>
+<body>
+<div class="card">
+<h2>Gráfico 1: Tempo de Resposta (s) por Caso de Teste — Agente Arquiteto</h2>
+<canvas id="graficoTempo" height="110"></canvas>
+</div>
+<div class="card">
+<h2>Gráfico 2: Consumo de Tokens (Entrada vs. Saída) por Caso de Teste</h2>
+<canvas id="graficoTokens" height="110"></canvas>
+</div>
+<div class="card">
+<h2>Diagramas Entidade-Relacionamento (DER) Gerados Automaticamente</h2>
+<div class="der-box">
+<div class="der-item"><h4>Teste 1: Artefato - Helpflow.pdf (completa)</h4><div class="mermaid">
+erDiagram
+    USUARIO ||--o{ CHAMADO : abre
+    USUARIO ||--o{ INTERACAO : escreve
+    CHAMADO ||--|{ INTERACAO : possui
+    CHAMADO ||--o{ ANEXO : contem
+    CHAMADO }o--|| EQUIPE : atribuido_a
+    SERVICO ||--o{ CHAMADO : classifica
+</div></div><div class="der-item"><h4>Teste 2: Artefato - HealthSync.pdf (completa)</h4><div class="mermaid">
+erDiagram
+    PACIENTE ||--o{ CONSULTA : agenda
+    PROFISSIONAL ||--o{ CONSULTA : realiza
+    CONSULTA ||--o| PRONTUARIO : gera
+    CONSULTA ||--o| FATURAMENTO : processa
+    PACIENTE {
+        uuid paciente_id
+        string cpf
+    }
+    PROFISSIONAL {
+        uuid profissional_id
+        string crm
+    }
+    CONSULTA {
+        uuid consulta_id
+        uuid paciente_id
+        uuid profissional_id
+    }
+</div></div><div class="der-item"><h4>Teste 3: Artefato - HealthSync.pdf (persistencia)</h4><div class="mermaid">
+erDiagram
+    PACIENTE ||--o{ CONSULTA : agenda
+    PROFISSIONAL ||--o{ CONSULTA : realiza
+    PACIENTE {
+        uuid paciente_id
+        string cpf
+        string nome
+    }
+    PROFISSIONAL {
+        uuid profissional_id
+        string crm
+        string especialidade
+    }
+    CONSULTA {
+        uuid consulta_id
+        uuid paciente_id
+        uuid profissional_id
+        timestamp data_hora
+        string status
+    }
+</div></div><div class="der-item"><h4>Teste 4: Artefato - Forgetwin.pdf (completa)</h4><div class="mermaid">
+erDiagram
+    MAQUINA_ATIVO ||--o{ SENSOR_IOT : possui
+    MAQUINA_ATIVO ||--o{ ORDEM_PRODUCAO : executa
+    MAQUINA_ATIVO ||--o{ ORDEM_SERVICO : sofre
+    SENSOR_IOT ||--o{ LEITURA_TELEMETRIA : gera
+    ORDEM_SERVICO ||--o{ RESERVA_CONSUMO_PECA : consome
+    PECA_ALMOXARIFADO ||--o{ RESERVA_CONSUMO_PECA : vinculada
+</div></div><div class="der-item"><h4>Teste 5: borda_vago.txt (completa)</h4><div class="mermaid">
+erDiagram
+    CLIENTES ||--o{ SESSOES : possui
+    CLIENTES {
+        uuid id PK
+        string email
+        string senha_hash
+    }
+    SESSOES {
+        uuid id PK
+        uuid cliente_id FK
+        string token_jwt
+    }
+</div></div>
+</div>
+</div>
+<script>
+const labels = ["Teste 1: Artefato - Helpflow.pdf (completa)", "Teste 2: Artefato - HealthSync.pdf (completa)", "Teste 3: Artefato - HealthSync.pdf (persistencia)", "Teste 4: Artefato - Forgetwin.pdf (completa)", "Teste 5: borda_vago.txt (completa)"];
+const tempos = [6.89, 5.17, 3.96, 8.41, 3.78];
+const tokensIn = [15004, 6449, 6375, 21664, 163];
+const tokensOut = [742, 773, 412, 825, 467];
+
+new Chart(document.getElementById('graficoTempo'), {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: [{
+      label: 'Tempo de Execução (Segundos)',
+      data: tempos,
+      backgroundColor: ['#2e7d32', '#1565c0', '#6a1b9a', '#ef6c00', '#00838f', '#c62828']
+    }]
+  }
+});
+
+new Chart(document.getElementById('graficoTokens'), {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: [
+      { label: 'Tokens de Entrada (Input)', data: tokensIn, backgroundColor: '#1976d2' },
+      { label: 'Tokens de Saída (ADR Gerado)', data: tokensOut, backgroundColor: '#43a047' }
+    ]
+  }
+});
+</script>
+</body>
+</html>

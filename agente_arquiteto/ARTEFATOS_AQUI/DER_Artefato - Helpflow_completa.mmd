@@ -1,0 +1,7 @@
+erDiagram
+    USUARIO ||--o{ CHAMADO : abre
+    USUARIO ||--o{ INTERACAO : escreve
+    CHAMADO ||--|{ INTERACAO : possui
+    CHAMADO ||--o{ ANEXO : contem
+    CHAMADO }o--|| EQUIPE : atribuido_a
+    SERVICO ||--o{ CHAMADO : classifica

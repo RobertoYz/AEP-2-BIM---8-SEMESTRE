@@ -1,0 +1,12 @@
+erDiagram
+    CLIENTES ||--o{ SESSOES : possui
+    CLIENTES {
+        uuid id PK
+        string email
+        string senha_hash
+    }
+    SESSOES {
+        uuid id PK
+        uuid cliente_id FK
+        string token_jwt
+    }
